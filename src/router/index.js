@@ -80,7 +80,7 @@ export const asyncRouterMap = [
     name: '融资申请',
     icon: 'chart',
     children: [
-      { path: 'index', component: _import('financing/index'), name: '融资申请' },
+      { path: 'index', component: _import('financing/credit.applying'), name: '融资申请' },
       { path: 'credit', component: _import('financing/credit'), name: '授信管理' },
       { path: 'creditDetail', component: _import('financing/credit.detail'), name: '授信详情', hidden: true },
       { path: 'keyboard2', component: _import('financing/loan'), name: '用款查询' },
