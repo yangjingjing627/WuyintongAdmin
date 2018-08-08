@@ -33,19 +33,29 @@
       </div>
       <div class="right-area echarts-item">
         <h3>融资详情</h3>
-        <!-- <line-chart></line-chart> -->
+        <line-chart :width="'90%'" :height="'250px'"></line-chart>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import lineChart from './lineChart'
-
+import lineChart from './lineChart'
+import * as hpApi from '@/api/homepage'
 export default {
-  name: 'homepage-index',
+  name: 'homepage',
   components: {
-    // lineChart
+    lineChart
+  },
+  mounted() {
+    this.loanStatictis()
+  },
+  methods: {
+    loanStatictis() {
+      hpApi.fetchCreditCompany().then(res => {
+        console.log(res)
+      })
+    }
   }
 }
 </script>
@@ -155,5 +165,4 @@ $iconImgUrl:'../../../src/assets';
     }
   }
 }
-
 </style>
