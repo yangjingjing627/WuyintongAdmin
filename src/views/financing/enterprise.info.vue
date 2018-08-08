@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <p class='title'>企业基本信息</p>
-    <el-row>
+    <el-row class='info-detail'>
       <el-col :span="12">
         <el-row :gutter="20">
           <el-col :span="12" style="text-align: right;">企业全称</el-col>
@@ -50,7 +50,7 @@ export default {
     text-indent: 20px;
     margin: 0;
   }
-  .el-row {
+  .info-detail {
     height: 34px;
     line-height: 34px;
     background: #272D4A;

@@ -85,7 +85,6 @@ export const asyncRouterMap = [
       { path: 'keyboard2', component: _import('charts/keyboard2'), name: '用款查询' },
       { path: 'line', component: _import('charts/line'), name: '还款查询' },
       { path: 'enterpriseInfo', component: _import('financing/enterprise.info'), name: '放款详情' }
-      // { path: 'test', component: _import('financing/test'), name: '测试' }
     ]
   },
   /*
