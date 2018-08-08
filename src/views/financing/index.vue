@@ -226,6 +226,7 @@
 import { fetchList } from '@/api/article'
 import CreditApproval from './credit.approval.vue'
 import ApprovalRecord from './approval.record.vue'
+import EnterpriseInfo from './enterprise.info.vue'
 
 export default {
   data() {
@@ -276,11 +277,13 @@ export default {
   },
   components: {
     CreditApproval,
-    ApprovalRecord
+    ApprovalRecord,
+    EnterpriseInfo
   },
   methods: {
     handleClick(row) {
       console.log(row)
+      this.$router.push({ path: '/financing/enterpriseInfo' })
     },
     handleCredit(row) {
       this.creditApproval.visible = true

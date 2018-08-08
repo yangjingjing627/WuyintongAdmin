@@ -1,14 +1,10 @@
 import fetch from '@/utils/fetch'
 
-export function loginByUsername(username, password) {
-  const data = {
-    username,
-    password
-  }
+export function loginByUsername(query) {
   return fetch({
-    url: '/login/login',
+    url: '/user/login',
     method: 'post',
-    data
+    params: query
   })
 }
 
@@ -26,4 +22,3 @@ export function getUserInfo(token) {
     params: { token }
   })
 }
-
