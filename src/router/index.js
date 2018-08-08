@@ -82,7 +82,7 @@ export const asyncRouterMap = [
     children: [
       { path: 'index', component: _import('financing/index'), name: '融资申请' },
       { path: 'keyboard', component: _import('charts/keyboard'), name: '授信管理' },
-      { path: 'keyboard2', component: _import('charts/keyboard2'), name: '用款查询' },
+      { path: 'loan', component: _import('financing/loan'), name: '用款查询' },
       { path: 'line', component: _import('charts/line'), name: '还款查询' },
       { path: 'test', component: _import('financing/test'), name: '测试' }
     ]
@@ -184,19 +184,19 @@ export const asyncRouterMap = [
     name: '综合实例',
     icon: 'example',
     children: [
-      // {
-      //   path: '/example/table',
-      //   component: _import('example/table/index'),
-      //   redirect: '/example/table/table',
-      //   name: 'Table',
-      //   icon: 'table',
-      //   children: [
-      //     { path: 'dynamictable', component: _import('example/table/dynamictable/index'), name: '动态table' },
-      //     { path: 'dragtable', component: _import('example/table/dragTable'), name: '拖拽table' },
-      //     { path: 'inline_edit_table', component: _import('example/table/inlineEditTable'), name: 'table内编辑' },
-      //     { path: 'table', component: _import('example/table/table'), name: '综合table' }
-      //   ]
-      // },
+      {
+        path: '/example/table',
+        component: _import('example/table/index'),
+        redirect: '/example/table/table',
+        name: 'Table',
+        icon: 'table',
+        children: [
+          { path: 'dynamictable', component: _import('example/table/dynamictable/index'), name: '动态table' },
+          { path: 'dragtable', component: _import('example/table/dragTable'), name: '拖拽table' },
+          { path: 'inline_edit_table', component: _import('example/table/inlineEditTable'), name: 'table内编辑' },
+          { path: 'table', component: _import('example/table/table'), name: '综合table' }
+        ]
+      },
       { path: 'form/edit', icon: 'form', component: _import('example/form'), name: '编辑Form', meta: { isEdit: true }},
       { path: 'form/create', icon: 'form', component: _import('example/form'), name: '创建Form' },
       { path: 'tab/index', icon: 'tab', component: _import('example/tab/index'), name: 'Tab' }
