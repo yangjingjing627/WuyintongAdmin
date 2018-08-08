@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="mb10">
     <p class='title'>企业基本信息</p>
     <el-row class='info-detail'>
       <el-col :span="12">
@@ -15,7 +15,7 @@
         </el-row>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row class='info-detail'>
       <el-col :span="12">
         <el-row :gutter="20">
           <el-col :span="12" style="text-align: right;">企业全称</el-col>
@@ -58,5 +58,8 @@ export default {
     font-family: PingFangSC-Medium;
     font-size: 14px;
     color: #B4BAC6;
+  }
+  .mb10 {
+    margin-bottom: 10px;
   }
 </style>
