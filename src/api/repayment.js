@@ -10,7 +10,15 @@ export function fetchList(query) {
 
 export function fetchBillDetail(query) {
   return fetch({
-    url: '/repayment/queryBillDetail?repayNo=20180502143536-695-151-6776',
+    url: '/repayment/queryBillDetail',
+    method: 'get',
+    params: query
+  })
+}
+
+export function fetchRepaymentDetail(query) {
+  return fetch({
+    url: '/repayment/queryRepaymentDetail',
     method: 'get',
     params: query
   })

@@ -10,7 +10,7 @@ export function fetchList(query) {
 
 export function fetchDetail(query) {
   return fetch({
-    url: '/article/detail',
+    url: '/fianceApply/creditApplyDetail/20180502143536-695-151-6776',
     method: 'get',
     params: query
   })
