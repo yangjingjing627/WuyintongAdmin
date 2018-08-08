@@ -83,7 +83,8 @@ export const asyncRouterMap = [
       { path: 'index', component: _import('financing/index'), name: '融资申请' },
       { path: 'credit', component: _import('financing/credit'), name: '授信管理' },
       { path: 'creditDetail', component: _import('financing/credit.detail'), name: '授信详情', hidden: true },
-      { path: 'keyboard2', component: _import('financing/loan'), name: '用款查询' },
+      { path: 'loan', component: _import('financing/loan'), name: '用款查询' },
+      { path: 'loanInfo', component: _import('financing/loan.info'), name: '用款详情' },
       { path: 'line', component: _import('charts/line'), name: '还款查询' },
       { path: 'enterpriseInfo', component: _import('financing/enterprise.info'), name: '放款详情', hidden: true }
     ]
