@@ -197,7 +197,7 @@
 </template>
 
 <script>
-import { fetchList, certification, updateStatus} from '@/api/loan'
+import { fetchList, certification, updateStatus } from '@/api/loan'
 import waves from '@/directive/waves/index.js' // 水波纹指令
 import { parseTime } from '@/utils'
 

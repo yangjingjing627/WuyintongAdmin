@@ -91,11 +91,20 @@ export default {
       }
     },
     handleLogin() {
-      loginByUsername(this.loginForm).then(response => {
-        this.postForm = response.data
-      }).catch(err => {
-        this.fetchSuccess = false
-        console.log(err)
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          this.loading = true
+          this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
+            this.loading = false
+            this.$({ path: '/' })
+                // this.showDialog = true
+          }).catch(() => {
+            this.loading = false
+          })
+        } else {
+          console.log('error submit!!')
+          return false
+        }
       })
     },
     afterQRScan() {
