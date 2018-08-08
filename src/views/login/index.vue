@@ -7,6 +7,13 @@
         <span class="svg-container svg-container_login">
           <icon-svg icon-class="user" />
         </span>
+        <el-input name="username" type="text" v-model="loginForm.organizationIdName" autoComplete="on" placeholder="" />
+      </el-form-item>
+
+      <el-form-item prop="username">
+        <span class="svg-container svg-container_login">
+          <icon-svg icon-class="user" />
+        </span>
         <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="邮箱" />
       </el-form-item>
 
@@ -21,8 +28,8 @@
 
       <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">登录</el-button>
 
-      <div class='tips'>账号:admin 密码随便填</div>
-      <div class='tips'>账号:editor  密码随便填</div>
+      <div class='tips'>账号:admin</div>
+      <div class='tips'>账号:editor</div>
 
       <el-button class='thirdparty-button' type="primary" @click='showDialog=true'>打开第三方登录</el-button>
     </el-form>
@@ -39,6 +46,7 @@
 <script>
 import { isvalidUsername } from '@/utils/validate'
 import socialSign from './socialsignin'
+import { loginByUsername } from '@/api/login'
 
 export default {
   components: { socialSign },
@@ -60,6 +68,8 @@ export default {
     }
     return {
       loginForm: {
+        organizationIdName: '上海银行',
+        organizationId: 54,
         username: 'admin',
         password: '1111111'
       },
@@ -81,20 +91,11 @@ export default {
       }
     },
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
-        if (valid) {
-          this.loading = true
-          this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
-            this.loading = false
-            this.$router.push({ path: '/' })
-                // this.showDialog = true
-          }).catch(() => {
-            this.loading = false
-          })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
+      loginByUsername(this.loginForm).then(response => {
+        this.postForm = response.data
+      }).catch(err => {
+        this.fetchSuccess = false
+        console.log(err)
       })
     },
     afterQRScan() {

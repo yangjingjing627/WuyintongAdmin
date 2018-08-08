@@ -82,12 +82,15 @@
  }
  //物银通专设样式
  .el-input__inner {
-   background-color: #000;
+  //  background-color: #000;
    color: #ccc;
  }
 .el-input-group__append, .el-input-group__prepend {
   background-color: #20a0ff;
   color: white;
+}
+.el-table {
+  border: 0;
 }
 .el-table tr,.el-table::after, .el-table::before {
   background-color: #242A48;
@@ -108,6 +111,12 @@
 }
 .el-table__body tr:hover>td{
   background-color: #1C213E !important;
+ }
+ .el-table--border td, .el-table--border th {
+   border-right: 0;
+ }
+ .el-table td, .el-table th.is-leaf {
+   border-bottom: 1px solid black;
  }
  // el-menu样式修改
  .el-menu {
