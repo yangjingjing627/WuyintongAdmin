@@ -92,7 +92,7 @@
 
             <div v-show="!listLoading" class="pagination-container">
               <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="listQuery.page"
-                :page-size="listQuery.limit" layout="sizes, prev, pager, next, jumper" :total="total1">
+                :page-size="listQuery.sum" layout="sizes, prev, pager, next, jumper" :total="total1">
               </el-pagination>
             </div>
           </el-tab-pane>
@@ -175,7 +175,7 @@
 
             <div v-show="!listLoading" class="pagination-container">
               <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="listQuery.page"
-                 :page-size="listQuery.limit" layout="sizes, prev, pager, next, jumper" :total="total2">
+                 :page-size="listQuery.sum" layout="sizes, prev, pager, next, jumper" :total="total2">
               </el-pagination>
             </div>
           </el-tab-pane>
@@ -222,11 +222,10 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        limit: 20,
+        sum: 20,
         importance: undefined,
-        title: undefined,
-        type: undefined,
-        sort: '+id'
+        applyNo: undefined,
+        custName: undefined
       },
       temp: {
         id: undefined,
@@ -273,7 +272,7 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      if (this.tabIndex === 1) {
+      if (this.tabIndex === '0') {
         fetchApplyING(this.listQuery).then(response => {
           this.list1 = response.data.data.list
           this.total1 = response.data.data.total
@@ -292,7 +291,7 @@ export default {
       this.getList()
     },
     handleSizeChange(val) {
-      this.listQuery.limit = val
+      this.listQuery.sum = val
       this.getList()
     },
     handleCurrentChange(val) {
@@ -386,9 +385,8 @@ export default {
       }))
     },
     changeTab(tab, event) {
-      console.log('--------------------------' + tab)
-      // this.tabIndex = index
-      // this.getList()
+      this.tabIndex = tab.index
+      this.getList()
     }
   }
 }
