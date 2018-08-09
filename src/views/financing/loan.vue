@@ -394,8 +394,10 @@ export default {
       this.dialogFormVisible = true
     },
     getCertification(row, status) {
+      this.resetCertificationInfo()
       certification(row.drawbookNo).then(response => {
         this.certificationInfo = response.data.data
+        this.certificationInfo.custName = row.custName
       })
       this.dialogStatus = 'create'
       this.certificationDialog = true
@@ -426,7 +428,25 @@ export default {
       updateStatus(drawbookNo).then(response => {
         this.listLoading = false
       })
-    }
+    },
+    resetCertificationInfo() {
+      this.certificationInfo = { 
+          custName: '',
+          drawbookNo: '',
+          applyTm: '',
+          applyAmt: '',
+          finanName: '',
+          loanTm: '',
+          loanAmt: '',
+          interest: '',
+          loanRate: '',
+          repayDt: '',
+          repayAmt: '',
+          chainHeight: '',
+          TXID: '',
+          chainTime: ''
+        }
+      }
   }
 }
 </script>

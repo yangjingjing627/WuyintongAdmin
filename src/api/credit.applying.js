@@ -15,3 +15,10 @@ export function fetchApplyRecord(query) {
     params: query
   })
 }
+
+export function creditRecords(creditReplyId) {
+  return fetch({
+    url: '/fianceApply/creditApplyRecordList/' + creditReplyId,
+    method: 'get'
+  })
+}

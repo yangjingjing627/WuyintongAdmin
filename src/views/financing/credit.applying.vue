@@ -164,9 +164,7 @@
                 <template scope="scope">
                   <el-button size="small" @click="handleModifyStatus(scope.row,'deleted')">查看企业信息
                   </el-button>
-                  <el-button v-if="scope.row.creditStatus=='1'" size="small" type="danger" @click="handleModifyStatus(scope.row,'draft')">授信批复
-                  </el-button>
-                  <el-button v-if="scope.row.creditStatus>='2'" size="small" @click="handleModifyStatus(scope.row,'draft')">修改授信批复
+                  <el-button v-if="scope.row.creditStatus>='2'" size="small" @click="showCreditRecords(scope.row,'draft')">审批记录
                   </el-button>
                 </template>
               </el-table-column> -->
@@ -183,11 +181,26 @@
 
       </el-col>
     </el-row>
+
+    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogPvVisible">
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">提款书编号：</el-col>
+            <!-- <el-col :span="16" style="text-align: left;">{{certificationInfo.drawbookNo}}</el-col> -->
+          </el-row>
+        </el-col>
+      </el-row>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogPvVisible = false">返 回</el-button>
+      </div>
+    </el-dialog>
+
   </div>
 </template>
 
 <script>
-import { fetchApplyING, fetchApplyRecord } from '@/api/credit.applying'
+import { fetchApplyING, fetchApplyRecord, creditRecords } from '@/api/credit.applying'
 import waves from '@/directive/waves/index.js' // 水波纹指令
 import { parseTime } from '@/utils'
 
@@ -329,15 +342,12 @@ export default {
       this.dialogStatus = 'update'
       this.dialogFormVisible = true
     },
-    handleDelete(row) {
-      this.$notify({
-        title: '成功',
-        message: '删除成功',
-        type: 'success',
-        duration: 2000
+    showCreditRecords(row) {
+      creditRecords(row.creditReplyId).then(response => {
+        console.log(response.data)
       })
-      const index = this.list1.indexOf(row)
-      this.list1.splice(index, 1)
+      this.dialogStatus = 'create'
+      this.dialogPvVisible = true
     },
     create() {
       this.temp.id = parseInt(Math.random() * 100) + 1024
