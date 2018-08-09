@@ -322,22 +322,7 @@ export default {
       pvData: [],
       showAuditor: false,
       tableKey: 0,
-      certificationInfo: {
-        custName: '',
-        drawbookNo: '',
-        applyTm: '',
-        applyAmt: '',
-        finanName: '',
-        loanTm: '',
-        loanAmt: '',
-        interest: '',
-        loanRate: '',
-        repayDt: '',
-        repayAmt: '',
-        chainHeight: '',
-        TXID: '',
-        chainTime: ''
-      }
+      certificationInfo: null
     }
   },
   filters: {
@@ -354,6 +339,7 @@ export default {
     }
   },
   created() {
+    this.resetCertificationInfo()
     this.getList()
   },
   methods: {

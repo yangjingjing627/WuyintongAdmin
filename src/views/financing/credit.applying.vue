@@ -263,7 +263,7 @@ export default {
       pvData: [],
       showAuditor: false,
       tableKey: 0,
-      stepIndex: 1,
+      stepIndex: 2,
       tabIndex: 0 // 正在审批，审批记录
     }
   },
