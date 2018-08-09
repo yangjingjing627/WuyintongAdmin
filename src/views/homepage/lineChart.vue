@@ -40,6 +40,7 @@ export default {
     }
   },
   mounted() {
+    this.initChart()
     if (this.autoResize) {
       this.__resizeHanlder = debounce(() => {
         if (this.chart) {
@@ -67,13 +68,17 @@ export default {
     this.chart = null
   },
   watch: {
-    thisMonth(val) {
-      this.initChart()
+    thisMonth() {
+      this.updateChart(this.thisMonth, this.lastMonth)
     }
   },
   methods: {
     initChart() {
       this.chart = echarts.init(this.$el, 'macarons')
+      this.updateChart(this.thisMonth, this.lastMonth)
+    },
+    updateChart(thisMonth, lastMonth) {
+      this.chart.clear()
       this.chart.setOption({
         xAxis: {
           name: 'AAA',
@@ -132,7 +137,7 @@ export default {
               }
             }
           },
-          data: this.thisMonth,
+          data: thisMonth,
           animationDuration: 2600,
           animationEasing: 'cubicInOut'
         },
@@ -148,11 +153,11 @@ export default {
               }
             }
           },
-          data: this.lastMonth,
+          data: lastMonth,
           animationDuration: 2000,
           animationEasing: 'quadraticOut'
         }]
-      })
+      }, true)
     }
   }
 }

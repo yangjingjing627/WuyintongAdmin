@@ -31,7 +31,7 @@ export default {
     }
   },
   mounted() {
-    // this.initChart()
+    this.initChart()
   },
   beforeDestroy() {
     if (!this.chart) {
@@ -42,12 +42,16 @@ export default {
   },
   watch: {
     statictis(val) {
-      this.initChart()
+      this.updateChart(val)
     }
   },
   methods: {
     initChart() {
       this.chart = echarts.init(this.$el, 'macarons')
+      this.updateChart(this.statictis)
+    },
+    updateChart(statictis) {
+      this.chart.clear()
       this.chart.setOption({
         tooltip: {
           trigger: 'item'
@@ -95,13 +99,13 @@ export default {
             center: [200, 100],
             color: ['#8D5AF9', '#FD738D', '#4298F4'],
             data: [
-              { value: this.statictis[0], name: '通过率' },
-              { value: this.statictis[1], name: '拒审率' },
-              { value: this.statictis[2], name: '贷款申请' }
+              { value: statictis[0], name: '通过率' },
+              { value: statictis[1], name: '拒审率' },
+              { value: statictis[2], name: '贷款申请' }
             ]
           }
         ]
-      })
+      }, true)
     }
   }
 }

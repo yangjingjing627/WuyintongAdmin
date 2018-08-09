@@ -1,5 +1,5 @@
 <template>
-  <div class="homepage">
+  <div class="homepage" v-cloak>
     <div class="top-container">
       <div class="left-area">
         <!-- <p class="text">链上信息源服务提供商</p>
@@ -109,6 +109,9 @@ export default {
 <style rel="stylesheet/scss" lang="scss" scoped>
 $iconImgUrl:'../../../src/assets';
 @import '../../styles/iconfont.css';
+[v-cloak]{
+  display: none;
+}
 .homepage{
   max-width: 1440px;
   padding: 20px 30px;
