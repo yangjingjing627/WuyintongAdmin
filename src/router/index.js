@@ -57,19 +57,19 @@ export const asyncRouterMap = [
   /*
   * 金融产品管理
   */
-  {
-    path: '/management',
-    component: Layout,
-    redirect: '/management/index',
-    name: '金融产品管理',
-    icon: 'chart',
-    children: [
-      { path: 'index', component: _import('management/index'), name: '新增个人贷' }
-      // { path: 'keyboard', component: _import('charts/keyboard'), name: '新增企业贷' },
-      // { path: 'keyboard2', component: _import('charts/keyboard2'), name: '产品管理' },
-      // { path: 'line', component: _import('charts/line'), name: '合同管理' }
-    ]
-  },
+  // {
+  //   path: '/management',
+  //   component: Layout,
+  //   redirect: '/management/index',
+  //   name: '金融产品管理',
+  //   icon: 'chart',
+  //   children: [
+  //     { path: 'index', component: _import('management/index'), name: '新增个人贷' }
+  //     // { path: 'keyboard', component: _import('charts/keyboard'), name: '新增企业贷' },
+  //     // { path: 'keyboard2', component: _import('charts/keyboard2'), name: '产品管理' },
+  //     // { path: 'line', component: _import('charts/line'), name: '合同管理' }
+  //   ]
+  // },
   /*
   * 融资申请
   */
@@ -83,7 +83,8 @@ export const asyncRouterMap = [
       { path: 'index', component: _import('financing/credit.applying'), name: '融资申请' },
       { path: 'credit', component: _import('financing/credit'), name: '授信管理' },
       { path: 'creditDetail', component: _import('financing/credit.detail'), name: '授信详情', hidden: true },
-      { path: 'keyboard2', component: _import('financing/loan'), name: '用款查询' },
+      { path: 'loan', component: _import('financing/loan'), name: '用款查询' },
+      { path: 'loanInfo', component: _import('financing/loan.info'), name: '用款详情' },
       { path: 'line', component: _import('charts/line'), name: '还款查询' },
       { path: 'enterpriseInfo', component: _import('financing/enterprise.info'), name: '放款详情', hidden: true }
     ]
@@ -203,16 +204,16 @@ export const asyncRouterMap = [
       { path: 'tab/index', icon: 'tab', component: _import('example/tab/index'), name: 'Tab' }
     ]
   },
-  {
-    path: '/error',
-    component: Layout,
-    redirect: 'noredirect',
-    name: '错误页面',
-    icon: '404',
-    children: [
-      { path: '401', component: _import('errorPage/401'), name: '401' },
-      { path: '404', component: _import('errorPage/404'), name: '404' }
-    ]
-  },
+  // {
+  //   path: '/error',
+  //   component: Layout,
+  //   redirect: 'noredirect',
+  //   name: '错误页面',
+  //   icon: '404',
+  //   children: [
+  //     { path: '401', component: _import('errorPage/401'), name: '401', hidden: true },
+  //     { path: '404', component: _import('errorPage/404'), name: '404', hidden: true }
+  //   ]
+  // },
   { path: '*', redirect: '/404', hidden: true }
 ]
