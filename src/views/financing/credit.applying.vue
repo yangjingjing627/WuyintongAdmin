@@ -92,7 +92,7 @@
 
             <div v-show="!listLoading" class="pagination-container">
               <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="listQuery.page"
-                :page-size="listQuery.sum" layout="sizes, prev, pager, next, jumper" :total="total1">
+                :page-size="listQuery.sum" layout="prev, pager, next, jumper" :total="total1">
               </el-pagination>
             </div>
           </el-tab-pane>
@@ -175,7 +175,7 @@
 
             <div v-show="!listLoading" class="pagination-container">
               <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="listQuery.page"
-                 :page-size="listQuery.sum" layout="sizes, prev, pager, next, jumper" :total="total2">
+                 :page-size="listQuery.sum" layout="prev, pager, next, jumper" :total="total2">
               </el-pagination>
             </div>
           </el-tab-pane>
@@ -275,13 +275,13 @@ export default {
       if (this.tabIndex === '0') {
         fetchApplyING(this.listQuery).then(response => {
           this.list1 = response.data.data.list
-          this.total1 = response.data.data.total
+          this.total1 = response.data.data.pageCount
           this.listLoading = false
         })
       } else {
         fetchApplyRecord(this.listQuery).then(response => {
           this.list2 = response.data.data.list
-          this.total2 = response.data.data.total
+          this.total2 = response.data.data.pageCount
           this.listLoading = false
         })
       }

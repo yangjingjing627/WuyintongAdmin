@@ -88,7 +88,7 @@
 
     <div v-show="!listLoading" class="pagination-container">
       <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="listQuery.page"
-       :page-size="listQuery.sum" layout="sizes, prev, pager, next, jumper" :total="total">
+       :page-size="listQuery.sum" layout="prev, pager, next, jumper" :total="total">
       </el-pagination>
     </div>
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="certificationDialog">
