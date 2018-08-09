@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="3">
         <!-- 步骤条 -->
-        <el-steps style='margin-top:50px' direction="vertical" :space="100" :active="1" finish-status="success">
+        <el-steps style='margin-top:50px' direction="vertical" :space="100" :active='stepIndex' finish-status="success">
           <el-step title="融资申请"></el-step>
           <el-step title="授信初审"></el-step>
           <el-step title="授信复审"></el-step>
@@ -21,10 +21,10 @@
               <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" placeholder="企业名称" v-model="listQuery.custName">
               </el-input>
 
-              <el-select clearable class="filter-item" style="width: 130px" v-model="listQuery.type" placeholder="状态">
+              <!-- <el-select clearable class="filter-item" style="width: 130px" v-model="listQuery.type" placeholder="状态">
                 <el-option v-for="item in  calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key">
                 </el-option>
-              </el-select>
+              </el-select> -->
               <el-button class="filter-item" type="primary" v-waves icon="search" @click="handleFilter">搜索</el-button>
             </div>
             <el-table :key='tableKey' :data="list1" v-loading="listLoading" element-loading-text="给我一点时间" border fit highlight-current-row style="width: 100%">
@@ -104,10 +104,10 @@
               <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" placeholder="企业名称" v-model="listQuery.custName">
               </el-input>
 
-              <el-select clearable class="filter-item" style="width: 130px" v-model="listQuery.type" placeholder="状态">
+              <!-- <el-select clearable class="filter-item" style="width: 130px" v-model="listQuery.type" placeholder="状态">
                 <el-option v-for="item in  calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key">
                 </el-option>
-              </el-select>
+              </el-select> -->
               <el-button class="filter-item" type="primary" v-waves icon="search" @click="handleFilter">搜索</el-button>
             </div>
             <el-table :key='tableKey' :data="list2" v-loading="listLoading" element-loading-text="给我一点时间" border fit highlight-current-row style="width: 100%">
@@ -250,7 +250,8 @@ export default {
       pvData: [],
       showAuditor: false,
       tableKey: 0,
-      tabIndex: 2 // 正在审批，审批记录
+      stepIndex: 1,
+      tabIndex: 0 // 正在审批，审批记录
     }
   },
   filters: {
@@ -390,6 +391,12 @@ export default {
     },
     changeTab(tab, event) {
       this.tabIndex = tab.index
+      if (this.tabIndex === '0') {
+        this.stepIndex = 2
+      } else {
+        this.stepIndex = 4
+      }
+      console.log(this.stepIndex)
       this.getList()
     }
   }
