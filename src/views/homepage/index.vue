@@ -2,9 +2,9 @@
   <div class="homepage">
     <div class="top-container">
       <div class="left-area">
-        <p class="text">链上信息源服务提供商</p>
+        <!-- <p class="text">链上信息源服务提供商</p>
         <p class="count">29</p>
-        <p class="text">全部服务提供商</p>
+        <p class="text">全部服务提供商</p> -->
       </div>
       <div class="right-area">
         <p class="text">为我提供服务最频繁的服务商</p>
@@ -13,27 +13,32 @@
     <div class="total-container">
       <div class="total-item blue">
         <i class="iconfont icon-rongziguanli"></i>
-        <b>1029</b>
+        <b>{{applyTotal}}</b>
         <p>当前融资申请数量</p>
       </div>
       <div class="total-item red">
         <i class="iconfont icon-qiye"></i>
-        <b>1029</b>
+        <b>{{companyTotal}}</b>
         <p>已授信企业</p>
       </div>
       <div class="total-item purple">
         <i class="iconfont icon-msnui-calculator"></i>
-        <b>1029<span>万</span></b>
+        <b>{{loanTotal}}<span>万</span></b>
         <p>贷出资金</p>
       </div>
     </div>
     <div class="echarts-container">
       <div class="left-area echarts-item">
         <h3>贷款详情</h3>
+        <pie-chart :statictis="statictis"></pie-chart>
       </div>
       <div class="right-area echarts-item">
-        <h3>融资详情</h3>
-        <line-chart :width="'90%'" :height="'250px'"></line-chart>
+        <h3>融资申请</h3>
+        <line-chart :width="'90%'" :height="'250px'" :lastMonth="lastMonth" :thisMonth="thisMonth"></line-chart>
+        <div class="opts">
+          <div class="red point">上月</div>
+          <div class="blue point">本月</div>
+        </div>
       </div>
     </div>
   </div>
@@ -41,19 +46,61 @@
 
 <script>
 import lineChart from './lineChart'
+import pieChart from './pieChart'
 import * as hpApi from '@/api/homepage'
 export default {
   name: 'homepage',
   components: {
-    lineChart
+    lineChart,
+    pieChart
+  },
+  data() {
+    return {
+      lastMonth: [],
+      thisMonth: [],
+      applyTotal: '',
+      companyTotal: '',
+      loanTotal: '',
+      statictis: []
+    }
   },
   mounted() {
+    this.creditApply()
+    this.creditCompany()
+    this.loanMoney()
     this.loanStatictis()
   },
   methods: {
-    loanStatictis() {
+    // 融资申请
+    creditApply() {
+      hpApi.fetchCreditApply().then(res => {
+        res = res.data
+        if (res.data) {
+          const data = res.data
+          this.lastMonth = data.lastMonth
+          this.thisMonth = data.thisMonth
+          this.applyTotal = data.total
+        }
+      })
+    },
+    // 已授信企业
+    creditCompany() {
       hpApi.fetchCreditCompany().then(res => {
-        console.log(res)
+        res = res.data
+        this.companyTotal = res.data
+      })
+    },
+    // 贷出资金
+    loanMoney() {
+      hpApi.fetchLoanMoney().then(res => {
+        res = res.data
+        this.loanTotal = res.data
+      })
+    },
+    loanStatictis() {
+      hpApi.fetchLoanStatictis().then(res => {
+        res = res.data
+        this.statictis = res.data
       })
     }
   }
@@ -73,7 +120,8 @@ $iconImgUrl:'../../../src/assets';
     display: flex;
     .left-area{
       background: url(#{$iconImgUrl}/homepage/top_left_bg.png) 0 0 no-repeat;
-      width: 518px;
+      flex: 1;
+      max-width: 518px;
       height: 140px;
       margin-right: 10px;
       padding-left: 99px;
@@ -89,7 +137,7 @@ $iconImgUrl:'../../../src/assets';
     .right-area{
       background: url(#{$iconImgUrl}/homepage/top_right_bg.png) right 0 no-repeat;
       height: 140px;
-      flex: 2;
+      flex: 1;
       padding-left: 31px;
       padding-top: 21px;
     }
@@ -162,6 +210,30 @@ $iconImgUrl:'../../../src/assets';
     }
     .right-area{
       flex: 1;
+      position: relative;
+      .opts{
+        position: absolute;
+        right: 20px;
+        top: 200px;
+        .point{
+          font-size: 14px;
+          color: #B4BAC6;
+          &:before{
+            content: ' ';
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            border-radius:50%;
+            margin-right: 5px;
+          }
+          &.red:before{
+            background-color: #ED6293;
+          }
+          &.blue:before{
+            background-color: #53A8E2;
+          }
+        }
+      }
     }
   }
 }

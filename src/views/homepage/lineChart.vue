@@ -24,6 +24,14 @@ export default {
     autoResize: {
       type: Boolean,
       default: true
+    },
+    thisMonth: {
+      type: Array,
+      default: [0, 0, 0]
+    },
+    lastMonth: {
+      type: Array,
+      default: [0, 0, 0]
     }
   },
   data() {
@@ -32,7 +40,6 @@ export default {
     }
   },
   mounted() {
-    this.initChart()
     if (this.autoResize) {
       this.__resizeHanlder = debounce(() => {
         if (this.chart) {
@@ -41,7 +48,6 @@ export default {
       }, 100)
       window.addEventListener('resize', this.__resizeHanlder)
     }
-
     // 监听侧边栏的变化
     const sidebarElm = document.getElementsByClassName('sidebar-container')[0]
     sidebarElm.addEventListener('transitionend', this.__resizeHanlder)
@@ -60,58 +66,89 @@ export default {
     this.chart.dispose()
     this.chart = null
   },
+  watch: {
+    thisMonth(val) {
+      this.initChart()
+    }
+  },
   methods: {
     initChart() {
       this.chart = echarts.init(this.$el, 'macarons')
-
       this.chart.setOption({
         xAxis: {
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-          boundaryGap: false
+          name: 'AAA',
+          data: ['上旬', '中旬', '下旬'],
+          boundaryGap: false,
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: 'rgba(245, 247, 248, 0.2)'
+            }
+          },
+          axisLine: {
+            lineStyle: {
+              type: 'solid',
+              color: '#B4BAC6',
+              width: '1'
+            }
+          }
         },
         grid: {
           left: 10,
           right: 10,
-          bottom: 20,
+          top: 20,
           containLabel: true
         },
-
         tooltip: {
           trigger: 'axis',
           axisPointer: {
             type: 'cross'
           }
         },
-        yAxis: {},
-        series: [{
-          name: 'visitors',
-          itemStyle: {
-            normal: {
-              areaStyle: {}
+        yAxis: {
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: 'rgba(245, 247, 248,0.2)'
             }
           },
+          axisLine: {
+            lineStyle: {
+              type: 'solid',
+              color: '#B4BAC6',
+              width: '1'
+            }
+          }
+        },
+        series: [{
+          name: '本月',
           smooth: true,
           type: 'line',
-          data: [100, 120, 161, 134, 105, 160, 165],
+          itemStyle: {
+            normal: {
+              color: '#53A8E2',
+              lineStyle: {
+                color: '#53A8E2'
+              }
+            }
+          },
+          data: this.thisMonth,
           animationDuration: 2600,
           animationEasing: 'cubicInOut'
         },
         {
-          name: 'buyers',
+          name: '上月',
           smooth: true,
           type: 'line',
           itemStyle: {
             normal: {
-              color: 'rgba(2, 197, 233, 0.2)',
+              color: '#ED6293',
               lineStyle: {
-                color: 'rgba(2, 197, 233, 0.2)'
-              },
-              areaStyle: {
-                color: 'rgba(99,194,255, 0.6)'
+                color: '#ED6293'
               }
             }
           },
-          data: [120, 82, 91, 154, 162, 140, 130],
+          data: this.lastMonth,
           animationDuration: 2000,
           animationEasing: 'quadraticOut'
         }]

@@ -25,7 +25,7 @@ export function fetchCreditCompany() {
 }
 
 // 贷出资金
-export function fetchloanMoney() {
+export function fetchLoanMoney() {
   return fetch({
     url: '/supplyfinance/statictis/loanMoney',
     method: 'get'
