@@ -25,8 +25,34 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/dashboard',
     name: '首页',
-    hidden: true,
     children: [{ path: 'dashboard', component: _import('dashboard/index') }]
+  },
+  {
+    path: '/management',
+    component: Layout,
+    redirect: '/management/index',
+    name: '金融产品管理',
+    icon: 'chart',
+    children: [
+      { path: 'index', component: _import('management/index'), name: '新增个人贷' }
+    ]
+  },
+  /*
+  * 融资申请
+  */
+  {
+    path: '/financing',
+    component: Layout,
+    redirect: '/financing/index',
+    name: '融资申请',
+    icon: 'chart',
+    children: [
+      { path: 'index', component: _import('financing/index'), name: '融资申请' },
+      { path: 'keyboard', component: _import('charts/keyboard'), name: '授信管理' },
+      { path: 'keyboard2', component: _import('charts/keyboard2'), name: '用款查询' },
+      { path: 'line', component: _import('charts/line'), name: '还款查询' },
+      { path: 'test', component: _import('financing/test'), name: '测试' }
+    ]
   }
 ]
 
@@ -57,91 +83,88 @@ export const asyncRouterMap = [
   /*
   * 金融产品管理
   */
-  {
-    path: '/management',
-    component: Layout,
-    redirect: '/management/index',
-    name: '金融产品管理',
-    icon: 'chart',
-    children: [
-      { path: 'index', component: _import('management/index'), name: '新增个人贷' }
-      // { path: 'keyboard', component: _import('charts/keyboard'), name: '新增企业贷' },
-      // { path: 'keyboard2', component: _import('charts/keyboard2'), name: '产品管理' },
-      // { path: 'line', component: _import('charts/line'), name: '合同管理' }
-    ]
-  },
+  // {
+  //   path: '/management',
+  //   component: Layout,
+  //   redirect: '/management/index',
+  //   name: '金融产品管理',
+  //   icon: 'chart',
+  //   children: [
+  //     { path: 'index', component: _import('management/index'), name: '新增个人贷' }
+  //   ]
+  // },
   /*
   * 融资申请
   */
-  {
-    path: '/financing',
-    component: Layout,
-    redirect: '/financing/index',
-    name: '融资申请',
-    icon: 'chart',
-    children: [
-      { path: 'index', component: _import('financing/index'), name: '融资申请' },
-      { path: 'keyboard', component: _import('charts/keyboard'), name: '授信管理' },
-      { path: 'keyboard2', component: _import('charts/keyboard2'), name: '用款查询' },
-      { path: 'line', component: _import('charts/line'), name: '还款查询' },
-      { path: 'test', component: _import('financing/test'), name: '测试' }
-    ]
-  },
+  // {
+  //   path: '/financing',
+  //   component: Layout,
+  //   redirect: '/financing/index',
+  //   name: '融资申请',
+  //   icon: 'chart',
+  //   children: [
+  //     { path: 'index', component: _import('financing/index'), name: '融资申请' },
+  //     { path: 'keyboard', component: _import('charts/keyboard'), name: '授信管理' },
+  //     { path: 'keyboard2', component: _import('charts/keyboard2'), name: '用款查询' },
+  //     { path: 'line', component: _import('charts/line'), name: '还款查询' },
+  //     { path: 'test', component: _import('financing/test'), name: '测试' }
+  //   ]
+  // },
   /*
   * 链上信息查询
   */
-  {
-    path: '/charts',
-    component: Layout,
-    redirect: '/charts/index',
-    name: '链上信息查询',
-    icon: 'chart',
-    children: [
-      { path: 'line', component: _import('charts/line'), name: '企业信息查询' }
-    ]
-  },
+  // {
+  //   path: '/charts',
+  //   component: Layout,
+  //   redirect: '/charts/index',
+  //   name: '链上信息查询',
+  //   icon: 'chart',
+  //   children: [
+  //     { path: 'line', component: _import('charts/line'), name: '企业信息查询' }
+  //   ]
+  // },
   /*
   * 我的消息
   */
-  {
-    path: '/charts',
-    component: Layout,
-    redirect: '/charts/index',
-    name: '我的消息',
-    icon: 'chart',
-    children: [
-      { path: 'line', component: _import('charts/line'), name: '我的消息' },
-      { path: 'keyboard2', component: _import('charts/keyboard2'), name: '发送消息' }
-    ]
-  },
+  // {
+  //   path: '/charts',
+  //   component: Layout,
+  //   redirect: '/charts/index',
+  //   name: '我的消息',
+  //   icon: 'chart',
+  //   children: [
+  //     { path: 'line', component: _import('charts/line'), name: '我的消息' },
+  //     { path: 'keyboard2', component: _import('charts/keyboard2'), name: '发送消息' }
+  //   ]
+  // },
   /*
   *  用户管理
   */
-  {
-    path: '/user',
-    component: Layout,
-    redirect: '/user/index',
-    name: '用户管理',
-    icon: 'user',
-    children: [
-      { path: 'index', component: _import('user/index'), name: '用户管理' },
-      { path: 'add', component: _import('user/add.user'), name: '新增用户' }
-    ]
-  },
+  // {
+  //   path: '/user',
+  //   component: Layout,
+  //   redirect: '/user/index',
+  //   name: '用户管理',
+  //   icon: 'user',
+  //   children: [
+  //     { path: 'index', component: _import('user/index'), name: '用户管理' },
+  //     { path: 'add', component: _import('user/add.user'), name: '新增用户' }
+  //   ]
+  // },
   /*
   *  设置
   */
-  {
-    path: '/charts',
-    component: Layout,
-    redirect: '/charts/index',
-    name: '设置',
-    icon: 'chart',
-    children: [
-      { path: 'line', component: _import('charts/line'), name: '企业人员管理' },
-      { path: 'keyboard2', component: _import('charts/keyboard2'), name: '我的企业' }
-    ]
-  },
+  // {
+  //   path: '/charts',
+  //   component: Layout,
+  //   redirect: '/charts/index',
+  //   name: '设置',
+  //   icon: 'chart',
+  //   children: [
+  //     { path: 'line', component: _import('charts/line'), name: '企业人员管理' },
+  //     { path: 'keyboard2', component: _import('charts/keyboard2'), name: '我的企业' }
+  //   ]
+  // },
   // {
   //   path: '/components',
   //   component: Layout,
@@ -177,41 +200,41 @@ export const asyncRouterMap = [
   //     { path: 'mixchart', component: _import('charts/mixChart'), name: '混合图表' }
   //   ]
   // },
-  {
-    path: '/example',
-    component: Layout,
-    redirect: 'noredirect',
-    name: '综合实例',
-    icon: 'example',
-    children: [
-      // {
-      //   path: '/example/table',
-      //   component: _import('example/table/index'),
-      //   redirect: '/example/table/table',
-      //   name: 'Table',
-      //   icon: 'table',
-      //   children: [
-      //     { path: 'dynamictable', component: _import('example/table/dynamictable/index'), name: '动态table' },
-      //     { path: 'dragtable', component: _import('example/table/dragTable'), name: '拖拽table' },
-      //     { path: 'inline_edit_table', component: _import('example/table/inlineEditTable'), name: 'table内编辑' },
-      //     { path: 'table', component: _import('example/table/table'), name: '综合table' }
-      //   ]
-      // },
-      { path: 'form/edit', icon: 'form', component: _import('example/form'), name: '编辑Form', meta: { isEdit: true }},
-      { path: 'form/create', icon: 'form', component: _import('example/form'), name: '创建Form' },
-      { path: 'tab/index', icon: 'tab', component: _import('example/tab/index'), name: 'Tab' }
-    ]
-  },
-  {
-    path: '/error',
-    component: Layout,
-    redirect: 'noredirect',
-    name: '错误页面',
-    icon: '404',
-    children: [
-      { path: '401', component: _import('errorPage/401'), name: '401' },
-      { path: '404', component: _import('errorPage/404'), name: '404' }
-    ]
-  },
+  // {
+  //   path: '/example',
+  //   component: Layout,
+  //   redirect: 'noredirect',
+  //   name: '综合实例',
+  //   icon: 'example',
+  //   children: [
+  //     // {
+  //     //   path: '/example/table',
+  //     //   component: _import('example/table/index'),
+  //     //   redirect: '/example/table/table',
+  //     //   name: 'Table',
+  //     //   icon: 'table',
+  //     //   children: [
+  //     //     { path: 'dynamictable', component: _import('example/table/dynamictable/index'), name: '动态table' },
+  //     //     { path: 'dragtable', component: _import('example/table/dragTable'), name: '拖拽table' },
+  //     //     { path: 'inline_edit_table', component: _import('example/table/inlineEditTable'), name: 'table内编辑' },
+  //     //     { path: 'table', component: _import('example/table/table'), name: '综合table' }
+  //     //   ]
+  //     // },
+  //     { path: 'form/edit', icon: 'form', component: _import('example/form'), name: '编辑Form', meta: { isEdit: true }},
+  //     { path: 'form/create', icon: 'form', component: _import('example/form'), name: '创建Form' },
+  //     { path: 'tab/index', icon: 'tab', component: _import('example/tab/index'), name: 'Tab' }
+  //   ]
+  // },
+  // {
+  //   path: '/error',
+  //   component: Layout,
+  //   redirect: 'noredirect',
+  //   name: '错误页面',
+  //   icon: '404',
+  //   children: [
+  //     { path: '401', component: _import('errorPage/401'), name: '401' },
+  //     { path: '404', component: _import('errorPage/404'), name: '404' }
+  //   ]
+  // },
   { path: '*', redirect: '/404', hidden: true }
 ]

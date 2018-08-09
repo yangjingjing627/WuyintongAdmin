@@ -46,12 +46,15 @@ const user = {
   actions: {
     // 用户名登录
     LoginByUsername({ commit }, userInfo) {
-      const username = userInfo.username.trim()
+      console.log('----1234------' + JSON.stringify(userInfo))
+      // const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
-        loginByUsername(username, userInfo.password).then(response => {
-          const data = response.data
-          setToken(response.data.token)
-          commit('SET_TOKEN', data.token)
+        console.log('----12345------' + JSON.stringify(userInfo))
+        loginByUsername(userInfo).then(response => {
+          console.log('----123456------' + userInfo.organizationId)
+          const data = response.data.data
+          setToken(response.data.data.sessionId)
+          commit('SET_TOKEN', data.sessionId)
           resolve()
         }).catch(error => {
           reject(error)
@@ -95,6 +98,7 @@ const user = {
         logout(state.token).then(() => {
           commit('SET_TOKEN', '')
           commit('SET_ROLES', [])
+          console.log('----LogOut-----')
           removeToken()
           resolve()
         }).catch(error => {
@@ -107,6 +111,7 @@ const user = {
     FedLogOut({ commit }) {
       return new Promise(resolve => {
         commit('SET_TOKEN', '')
+        console.log('----FedLogOut-----')
         removeToken()
         resolve()
       })

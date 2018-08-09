@@ -8,6 +8,13 @@ const userMap = {
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: 'Super Admin'
   },
+  18301380329: {
+    role: ['18301380329'],
+    token: '18301380329',
+    introduction: '我是超级管理员A',
+    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    name: 'Super Admin A'
+  },
   editor: {
     role: ['editor'],
     token: 'editor',
