@@ -92,100 +92,168 @@
       </el-pagination>
     </div>
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="certificationDialog">
-      <tr>
-        <td>
-          提款书编号：{{certificationInfo.drawbookNo}}
-        </td>
-        <td>
-          企业名称：{{certificationInfo.custName}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          申请提款时间：{{certificationInfo.applyTm}}
-        </td>
-        <td>
-          申请提款金额：{{certificationInfo.applyAmt}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          放款时间：{{certificationInfo.loanTm}}
-        </td>
-        <td>
-          放款金额：{{certificationInfo.loanAmt}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          贷款利率：{{certificationInfo.loanRate}}
-        </td>
-        <td>
-          利息：{{certificationInfo.interest}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          还款金额：{{certificationInfo.repayAmt}}
-        </td>
-        <td>
-          还款日期：{{certificationInfo.repayDt}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          区块高度：{{certificationInfo.chainHeight}}
-        </td>
-        <td>
-          TX ID：{{certificationInfo.TXID}}
-        </td>
-      </tr>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">提款书编号：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.drawbookNo}}</el-col>
+          </el-row>
+        </el-col>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">企业名称：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.custName}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">申请提款时间：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.applyTm}}</el-col>
+          </el-row>
+        </el-col>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">申请提款金额：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.applyAmt}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">放款时间：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.loanTm}}</el-col>
+          </el-row>
+        </el-col>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">放款金额：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.loanAmt}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">贷款利率：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.loanRate}}</el-col>
+          </el-row>
+        </el-col>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">利息：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.interest}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">还款金额：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.repayAmt}}</el-col>
+          </el-row>
+        </el-col>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">还款日期：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.repayDt}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">区块高度：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.chainHeight}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">TX ID：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.TXID}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
       <div slot="footer" class="dialog-footer">
         <el-button @click="certificationDialog = false">返 回</el-button>
       </div>
     </el-dialog>
 
 <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
-      <tr>
-        <td>
-          提款书编号：{{certificationInfo.drawbookNo}}
-        </td>
-        <td>
-          企业名称：{{certificationInfo.custName}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          申请提款时间：{{certificationInfo.applyTm}}
-        </td>
-        <td>
-          申请提款金额：{{certificationInfo.applyAmt}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          放款时间：{{certificationInfo.loanTm}}
-        </td>
-        <td>
-          放款金额：{{certificationInfo.loanAmt}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          贷款利率：{{certificationInfo.loanRate}}
-        </td>
-        <td>
-          利息：{{certificationInfo.interest}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          还款金额：{{certificationInfo.repayAmt}}
-        </td>
-        <td>
-          还款日期：{{certificationInfo.repayDt}}
-        </td>
-      </tr>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">融资申请编号：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.drawbookNo}}</el-col>
+          </el-row>
+        </el-col>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="6" style="text-align: left;">企业名称：</el-col>
+            <el-col :span="18" style="text-align: left;">{{certificationInfo.custName}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">申请提款时间：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.applyTm}}</el-col>
+          </el-row>
+        </el-col>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">申请提款金额：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.applyAmt}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">放款时间：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.loanTm}}</el-col>
+          </el-row>
+        </el-col>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">放款金额：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.loanAmt}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">贷款利率：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.loanRate}}</el-col>
+          </el-row>
+        </el-col>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">利息：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.interest}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <el-row class='info-detail'>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">还款金额：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.repayAmt}}</el-col>
+          </el-row>
+        </el-col>
+        <el-col :span="12">
+          <el-row>
+            <el-col :span="8" style="text-align: left;">还款日期：</el-col>
+            <el-col :span="16" style="text-align: left;">{{certificationInfo.repayDt}}</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" type="success" @click="handleModifyStatus(certificationInfo.drawbookNo)">确认
           </el-button>

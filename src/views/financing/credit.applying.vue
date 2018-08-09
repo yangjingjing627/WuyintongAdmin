@@ -274,14 +274,18 @@ export default {
       this.listLoading = true
       if (this.tabIndex === '0') {
         fetchApplyING(this.listQuery).then(response => {
-          this.list1 = response.data.data.list
-          this.total1 = response.data.data.pageCount
+          if (response.data.data != null) {
+            this.list1 = response.data.data.list
+            this.total1 = response.data.data.pageCount
+          }
           this.listLoading = false
         })
       } else {
         fetchApplyRecord(this.listQuery).then(response => {
-          this.list2 = response.data.data.list
-          this.total2 = response.data.data.pageCount
+          if (response.data.data != null) {
+            this.list2 = response.data.data.list
+            this.total2 = response.data.data.pageCount
+          }
           this.listLoading = false
         })
       }
