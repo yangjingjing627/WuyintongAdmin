@@ -1,17 +1,5 @@
 import fetch from '@/utils/fetch'
 
-export function loginByUsername(username, password) {
-  const data = {
-    username,
-    password
-  }
-  return fetch({
-    url: '/login/login',
-    method: 'post',
-    data
-  })
-}
-
 export function logout() {
   return fetch({
     url: '/login/logout',
@@ -27,3 +15,16 @@ export function getUserInfo(token) {
   })
 }
 
+export function loginByUsername(form) {
+  const data = {
+    organizationId: form.organizationId,
+    name: form.name,
+    passwd: form.passwd
+  }
+  console.log(data)
+  return fetch({
+    url: '/user/login',
+    method: 'get',
+    params: data
+  })
+}
